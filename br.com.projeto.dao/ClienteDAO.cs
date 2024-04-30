@@ -21,8 +21,8 @@ namespace ProjetoControleVendas.br.com.projeto.dao
             try
             {
                 // 1 passo - Definir o cmd sql - insert into
-                string sql = @"insert into tb_clientes (nome,rg,cpf,email,telefone,celular,endereco,numero,complemento,bairro,cidade,estado)
-                                values (@nome, @rg, @cpf, @email, @telefone, @celular, @endereco, @numero, @complemento, @bairro, @cidade, @estado)";
+                string sql = @"insert into tb_clientes (nome,rg,cpf,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)
+                                values (@nome, @rg, @cpf, @email, @telefone, @celular, @cep, @endereco, @numero, @complemento, @bairro, @cidade, @estado)";
 
                 // 2 passo - Organizar o cmd sql
                 MySqlCommand executacmd = new MySqlCommand(sql, conexao);
@@ -32,6 +32,7 @@ namespace ProjetoControleVendas.br.com.projeto.dao
                 executacmd.Parameters.AddWithValue("@email",obj.email);
                 executacmd.Parameters.AddWithValue("@telefone",obj.telefone);
                 executacmd.Parameters.AddWithValue("@celular",obj.celular);
+                executacmd.Parameters.AddWithValue("@cep",obj.cep);
                 executacmd.Parameters.AddWithValue("@endereco",obj.endereco);
                 executacmd.Parameters.AddWithValue("@numero", obj.numero);
                 executacmd.Parameters.AddWithValue("@complemento", obj.complemento);

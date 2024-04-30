@@ -1,4 +1,5 @@
-﻿using ProjetoControleVendas.br.com.projeto.model;
+﻿using ProjetoControleVendas.br.com.projeto.dao;
+using ProjetoControleVendas.br.com.projeto.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,9 +36,10 @@ namespace ProjetoControleVendas.br.com.projeto.view
 
         private void btnsalvar_Click(object sender, EventArgs e)
         {
-            // Primeiro passo é armazenar os dados em um obj modelo
+
+            // 1 passo - Receber os dados dentro do objeto modelo de cliente
             Cliente obj = new Cliente();
-            obj.codigo = int.Parse(txtcodigo.Text);
+            
             obj.nome = txtnome.Text;
             obj.rg = txtrg.Text;
             obj.cpf = txtcpf.Text;
@@ -50,7 +52,12 @@ namespace ProjetoControleVendas.br.com.projeto.view
             obj.complemento = txtcomplemento.Text;
             obj.bairro = txtbairro.Text;
             obj.cidade = txtcidade.Text;
-            obj.estado = txtuf.Text;
+            obj.estado = cbuf.Text;
+
+            // 2 passo - Criar um objeto da classe ClienteDAO e chammar o metodo cadastrarCliente
+            ClienteDAO dao = new ClienteDAO();
+            dao.cadastrarCliente(obj);
+
         }
     }
 }
