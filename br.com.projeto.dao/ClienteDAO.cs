@@ -2,6 +2,7 @@
 using ProjetoControleVendas.br.com.projeto.conexao;
 using ProjetoControleVendas.br.com.projeto.model;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ProjetoControleVendas.br.com.projeto.dao
@@ -62,6 +63,34 @@ namespace ProjetoControleVendas.br.com.projeto.dao
         #endregion
 
         #region ListarCliente
+        public DataTable listarCliente()
+        {
+            try
+            {
+                // 1 passo - Criar o DataTable e o cmd sql
+                DataTable tabelacliente = new DataTable();
+
+                string sql = "select * from tb_clientes";
+
+                // 2 passo - Organizar o cmd sql e executar
+                MySqlCommand executacmd = new MySqlCommand(sql, conexao);
+
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                // 3 passo - Criar o MySqlDataAdapter para preencher os dados no Datatable
+                MySqlDataAdapter da = new MySqlDataAdapter(executacmd);
+                da.Fill(tabelacliente);
+
+                return tabelacliente;
+            }
+            catch (Exception erro)
+            {
+
+                MessageBox.Show("Ocorreu o seguinte erro: " + erro);
+                return null;
+            }
+        }
         #endregion
 
         #region BuscarCliente

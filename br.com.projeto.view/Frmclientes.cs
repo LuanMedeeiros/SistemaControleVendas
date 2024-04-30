@@ -59,5 +59,12 @@ namespace ProjetoControleVendas.br.com.projeto.view
             dao.cadastrarCliente(obj);
 
         }
+
+        private void Frmclientes_Load(object sender, EventArgs e)
+        {
+            // Sempre que a tela de consulta carregar ela exibira o resultado na tabela
+            ClienteDAO dao = new ClienteDAO();
+            dgvclientes.DataSource = dao.listarCliente();
+        }
     }
 }
