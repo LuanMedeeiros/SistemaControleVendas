@@ -62,6 +62,12 @@ namespace ProjetoControleVendas.br.com.projeto.view
 
         private void Frmclientes_Load(object sender, EventArgs e)
         {
+            // Alterando a cor da tabela GridView na tela
+            dgvclientes.DefaultCellStyle.ForeColor = Color.Black;
+
+            // Alterando a font da tabela GridView
+            this.dgvclientes.DefaultCellStyle.Font = new Font("Century gothic", 12);
+
             // Sempre que a tela de consulta carregar ela exibira o resultado na tabela
             ClienteDAO dao = new ClienteDAO();
             dgvclientes.DataSource = dao.listarCliente();
